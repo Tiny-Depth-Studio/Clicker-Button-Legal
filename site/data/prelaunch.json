@@ -1,0 +1,31 @@
+{
+  "app": {
+    "developers": [
+      "Tiny Depth Studio"
+    ],
+    "genres": [],
+    "header_image": "assets/store/header.jpg",
+    "id": 5526030,
+    "is_free": false,
+    "name": "Clicker Button",
+    "platforms": [
+      "windows"
+    ],
+    "release_date": "",
+    "short_description": "Buy buttons shaped like blocks, fit them onto your grid and click them for cash. Harder shapes pay bigger multipliers. Expand the map, hunt bonus tiles, coat every button in gold, gems and stranger elements, and climb through 100 upgrades, perks and prestige.",
+    "store_live": false,
+    "store_url": "https://store.steampowered.com/app/5526030/"
+  },
+  "news": [],
+  "screenshots": [
+    {"full": "assets/screenshots/01_board.jpg", "thumb": "assets/screenshots/01_board_thumb.jpg"},
+    {"full": "assets/screenshots/02_angle.jpg", "thumb": "assets/screenshots/02_angle_thumb.jpg"},
+    {"full": "assets/screenshots/03_late.jpg", "thumb": "assets/screenshots/03_late_thumb.jpg"},
+    {"full": "assets/screenshots/04_shop.jpg", "thumb": "assets/screenshots/04_shop_thumb.jpg"},
+    {"full": "assets/screenshots/05_perks.jpg", "thumb": "assets/screenshots/05_perks_thumb.jpg"},
+    {"full": "assets/screenshots/06_upgrades.jpg", "thumb": "assets/screenshots/06_upgrades_thumb.jpg"},
+    {"full": "assets/screenshots/07_closeup.jpg", "thumb": "assets/screenshots/07_closeup_thumb.jpg"},
+    {"full": "assets/screenshots/08_aurora.jpg", "thumb": "assets/screenshots/08_aurora_thumb.jpg"}
+  ],
+  "trailer": null
+}

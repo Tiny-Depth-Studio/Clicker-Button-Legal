@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' https://shared.akamai.steamstatic.com https://cdn.akamai.steamstatic.com https://shared.fastly.steamstatic.com https://shared.cloudflare.steamstatic.com; style-src 'sha256-UpVKt7VZIIytA62bj0QdS7uirf2QJsiyAN8IeCmz2cw='; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Clicker Button - Shape-fitting 3D clicker game</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Buy buttons shaped like blocks, fit them onto your grid and click them for cash. Harder shapes pay bigger multipliers. Expand the map, hunt bonus tiles, coat every button in gold, gems and stranger elements, and climb through 100 upgrades, perks and prestige.">
+<meta property="og:title" content="Clicker Button">
+<meta property="og:description" content="Buy buttons shaped like blocks, fit them onto your grid and click them for cash. Harder shapes pay bigger multipliers. Expand the map, hunt bonus tiles, coat every button in gold, gems and stranger elements, and climb through 100 upgrades, perks and prestige.">
+<meta property="og:image" content="https://tiny-depth-studio.github.io/Clicker-Button-Legal/assets/store/header.jpg">
+<meta property="og:type" content="website">
+<style>
+  :root {
+    --bg: #0a0f1a;
+    --bg-soft: #111a2b;
+    --card: rgba(226, 238, 255, 0.05);
+    --card-hover: rgba(226, 238, 255, 0.09);
+    --text: #eef3fb;
+    --text-dim: #a5b2c8;
+    --text-faint: #6f7d95;
+    --accent: #ffc63a;
+    --accent-strong: #ffd76e;
+    --accent-2: #6fb6ff;
+    --line: rgba(200, 220, 255, 0.14);
+    --line-strong: rgba(200, 220, 255, 0.28);
+    --glow: rgba(255, 198, 58, 0.22);
+
+    --font: ui-sans-serif, "Segoe UI Variable Display", "Segoe UI", Inter, Roboto,
+            "Helvetica Neue", Arial, sans-serif;
+    --font-mono: "Cascadia Mono", Consolas, "SF Mono", ui-monospace, monospace;
+    --radius: 16px;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #eef4fc;
+    --bg-soft: #e2ebf7;
+    --card: rgba(20, 15, 8, 0.04);
+    --card-hover: rgba(20, 15, 8, 0.075);
+    --text: #111a2b;
+    --text-dim: #46546b;
+    --text-faint: #6c7a90;
+    --accent: #a86a00;
+    --accent-strong: #855300;
+    --accent-2: #1f63b8;
+    --line: rgba(30, 24, 16, 0.14);
+    --line-strong: rgba(30, 24, 16, 0.26);
+    --glow: rgba(168, 106, 0, 0.18);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #eef4fc;
+      --bg-soft: #e2ebf7;
+      --card: rgba(20, 15, 8, 0.04);
+      --card-hover: rgba(20, 15, 8, 0.075);
+      --text: #111a2b;
+      --text-dim: #46546b;
+      --text-faint: #6c7a90;
+      --accent: #a86a00;
+      --accent-strong: #855300;
+      --accent-2: #1f63b8;
+      --line: rgba(30, 24, 16, 0.14);
+      --line-strong: rgba(30, 24, 16, 0.26);
+      --glow: rgba(168, 106, 0, 0.18);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 17px;
+    line-height: 1.6;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: var(--accent-strong); text-decoration: none; }
+  a:hover { color: var(--accent); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+  h1, h2, h3 { margin: 0; font-weight: 700; letter-spacing: -0.02em; text-wrap: balance; }
+
+  .wrap {
+    width: min(1120px, 100%);
+    margin: 0 auto;
+    padding: 0 clamp(1.1rem, 5vw, 2.6rem);
+  }
+
+  /* ---------- nav ---------- */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(14px) saturate(140%);
+  }
+  .topbar-inner {
+    width: min(1120px, 100%);
+    margin: 0 auto;
+    padding: 0.65rem clamp(1.1rem, 5vw, 2.6rem);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1rem;
+  }
+  .topbar-brand {
+    justify-self: start;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    color: var(--text);
+  }
+  .topbar-brand:hover { color: var(--text); }
+  .topbar-nav {
+    display: flex;
+    gap: 1.4rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+  }
+  .topbar-nav a { color: var(--text-dim); }
+  .topbar-nav a:hover { color: var(--text); }
+  .topbar-cta { justify-self: end; }
+
+  /* ---------- buttons ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: inherit;
+    font-size: 0.94rem;
+    font-weight: 600;
+    padding: 0.7rem 1.4rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    background: linear-gradient(135deg, var(--accent-strong), var(--accent));
+    color: #1a1405;
+    box-shadow: 0 8px 24px -10px var(--glow);
+    transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+  }
+  .btn:hover {
+    color: #1a1405;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px -12px var(--glow);
+  }
+  .btn.sm { padding: 0.5rem 1.05rem; font-size: 0.86rem; }
+  .btn.ghost {
+    background: var(--card);
+    color: var(--text);
+    border-color: var(--line-strong);
+    box-shadow: none;
+    backdrop-filter: blur(6px);
+  }
+  .btn.ghost:hover { background: var(--card-hover); color: var(--text); }
+
+  /* ---------- hero ---------- */
+  .hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: clamp(4rem, 12vw, 8rem) 0 clamp(3rem, 8vw, 5rem);
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    filter: blur(26px) saturate(120%);
+    transform: scale(1.15);
+    opacity: 0.5;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(60% 50% at 50% 0%, var(--glow), transparent 70%),
+      linear-gradient(180deg, color-mix(in srgb, var(--bg) 55%, transparent) 0%, var(--bg) 78%);
+  }
+  .kicker {
+    display: inline-block;
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  a.studio-link { text-decoration: none; }
+
+  a.studio-link:hover { color: var(--accent-strong); }
+  .hero h1 {
+    font-size: clamp(2.6rem, 8vw, 4.6rem);
+    line-height: 1.02;
+    margin-bottom: 1rem;
+  }
+  .lede {
+    color: var(--text-dim);
+    font-size: clamp(1.02rem, 2.3vw, 1.2rem);
+    max-width: 56ch;
+    margin: 0 auto 1.7rem;
+  }
+  .hero-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-bottom: 1.8rem;
+  }
+  .chips {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .chip {
+    font-size: 0.76rem;
+    font-weight: 500;
+    padding: 0.28rem 0.72rem;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--card);
+    color: var(--text-dim);
+    backdrop-filter: blur(6px);
+  }
+  .chip.free { color: var(--accent-strong); border-color: var(--line-strong); }
+  .btn.soon, .btn.soon:hover { cursor: default; transform: none; filter: saturate(0.75); }
+  .hero-art {
+    display: block;
+    width: min(760px, 100%);
+    margin: clamp(2.2rem, 6vw, 3.4rem) auto 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    box-shadow: 0 30px 70px -34px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+    transition: transform 0.2s ease;
+  }
+  .hero-art:hover { transform: translateY(-3px); }
+
+  /* ---------- sections ---------- */
+  section.block { padding: clamp(3.2rem, 8vw, 5.2rem) 0; }
+  section.block + section.block { border-top: 1px solid var(--line); }
+  .block-head { margin-bottom: clamp(1.8rem, 4vw, 2.6rem); }
+  .block-head h2 { font-size: clamp(1.7rem, 4vw, 2.3rem); }
+  .block-dek {
+    color: var(--text-dim);
+    font-size: 1rem;
+    max-width: 58ch;
+    margin: 0.7rem auto 0;
+  }
+  .block-more { margin-top: clamp(1.6rem, 4vw, 2.2rem); }
+
+  /* ---------- news ---------- */
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+    gap: 1rem;
+  }
+  .news-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    text-align: left;
+    padding: 1.4rem 1.5rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    background: var(--card);
+    color: inherit;
+    transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+  }
+  .news-card:hover {
+    color: inherit;
+    transform: translateY(-3px);
+    background: var(--card-hover);
+    border-color: var(--line-strong);
+  }
+  .news-meta {
+    display: flex;
+    gap: 0.55rem;
+    flex-wrap: wrap;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-faint);
+  }
+  .news-card h3 { font-size: 1.06rem; line-height: 1.32; }
+  .news-card p { margin: 0; font-size: 0.92rem; color: var(--text-dim); }
+  .news-card .more {
+    margin-top: auto;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-strong);
+  }
+
+  /* ---------- media ---------- */
+  .media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(248px, 1fr));
+    gap: 0.85rem;
+  }
+  .shot {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--bg-soft);
+    transition: transform 0.18s ease, border-color 0.18s ease;
+  }
+  .shot:hover { transform: translateY(-3px); border-color: var(--line-strong); }
+  .shot img { aspect-ratio: 16 / 9; object-fit: cover; transition: transform 0.35s ease; }
+  .shot:hover img { transform: scale(1.05); }
+  .shot.trailer { grid-column: span 2; }
+  .shot.trailer::after {
+    content: "▶";
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-size: 2.2rem;
+    color: #fff8ec;
+    text-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+    background: linear-gradient(180deg, rgba(10, 15, 26, 0.1), rgba(10, 15, 26, 0.45));
+  }
+
+  /* ---------- languages ---------- */
+  .lang-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.7rem;
+  }
+  .lang-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: left;
+    padding: 0.85rem 1rem;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    background: var(--card);
+    transition: transform 0.16s ease, background 0.16s ease, border-color 0.16s ease;
+  }
+  .lang-card:hover {
+    transform: translateY(-2px);
+    background: var(--card-hover);
+    border-color: var(--line-strong);
+  }
+  .lang-flag {
+    flex: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    object-fit: contain;
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.35));
+    transition: transform 0.16s ease;
+  }
+  .lang-card:hover .lang-flag { transform: scale(1.08); }
+  .lang-text { display: flex; flex-direction: column; min-width: 0; }
+  .lang-text strong { font-size: 0.96rem; font-weight: 600; color: var(--text); line-height: 1.25; }
+  .lang-text span {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* ---------- legal + footer ---------- */
+  .legal-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.7rem; }
+  footer.site {
+    padding: 2.4rem 0 3.4rem;
+    border-top: 1px solid var(--line);
+    color: var(--text-faint);
+    font-size: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+  footer.site a { color: var(--text-dim); }
+
+  @media (max-width: 860px) {
+    .topbar-inner { grid-template-columns: 1fr auto; }
+    .topbar-nav { display: none; }
+    .shot.trailer { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <a class="topbar-brand" href="#top">&#9635; Clicker Button</a>
+    <nav class="topbar-nav" aria-label="Sections">
+      <a href="#media">Screenshots</a>
+      <a href="#legal">Legal</a>
+    </nav>
+    <span class="btn sm topbar-cta soon" aria-disabled="true">Coming soon</span>
+  </div>
+</div>
+
+<header class="hero" id="top">
+  <img class="hero-bg" src="assets/store/header.jpg" alt="" role="presentation">
+  <div class="wrap">
+    <a class="kicker studio-link" href="https://tiny-depth-studio.github.io/">Tiny Depth Studio</a>
+    <h1>Clicker Button</h1>
+    <p class="lede">Buy buttons shaped like blocks, fit them onto your grid and click them for cash. Harder shapes pay bigger multipliers. Expand the map, hunt bonus tiles, coat every button in gold, gems and stranger elements, and climb through 100 upgrades, perks and prestige.</p>
+    <div class="hero-actions">
+      <span class="btn soon" aria-disabled="true">Coming soon to Steam</span>
+      <a class="btn ghost" href="#media">See screenshots</a>
+    </div>
+    <div class="chips"><span class="chip free">Coming soon to Steam</span><span class="chip">Windows</span></div>
+    <a class="hero-art" href="#media" aria-label="Clicker Button">
+      <img src="assets/store/header.jpg" alt="Clicker Button store artwork" width="920" height="430">
+    </a>
+  </div>
+</header>
+
+<main>
+
+  <section class="block" id="media">
+    <div class="wrap">
+      <div class="block-head">
+        <span class="kicker">Gallery</span>
+        <h2>On the board</h2>
+        <p class="block-dek">8 shots from the board.</p>
+      </div>
+      <div class="media-grid">
+      <a class="shot" href="assets/screenshots/01_board.jpg">
+        <img src="assets/screenshots/01_board_thumb.jpg" alt="Clicker Button screenshot 1" loading="lazy" width="600" height="338">
+      </a>
+      <a class="shot" href="assets/screenshots/02_angle.jpg">
+        <img src="assets/screenshots/02_angle_thumb.jpg" alt="Clicker Button screenshot 2" loading="lazy" width="600" height="338">
+      </a>
+      <a class="shot" href="assets/screenshots/03_late.jpg">
+        <img src="assets/screenshots/03_late_thumb.jpg" alt="Clicker Button screenshot 3" loading="lazy" width="600" height="338">
+      </a>
+      <a class="shot" href="assets/screenshots/04_shop.jpg">
+        <img src="assets/screenshots/04_shop_thumb.jpg" alt="Clicker Button screenshot 4" loading="lazy" width="600" height="338">
+      </a>
+      <a class="shot" href="assets/screenshots/05_perks.jpg">
+        <img src="assets/screenshots/05_perks_thumb.jpg" alt="Clicker Button screenshot 5" loading="lazy" width="600" height="338">
+      </a>
+      <a class="shot" href="assets/screenshots/06_upgrades.jpg">
+        <img src="assets/screenshots/06_upgrades_thumb.jpg" alt="Clicker Button screenshot 6" loading="lazy" width="600" height="338">
+      </a>
+      <a class="shot" href="assets/screenshots/07_closeup.jpg">
+        <img src="assets/screenshots/07_closeup_thumb.jpg" alt="Clicker Button screenshot 7" loading="lazy" width="600" height="338">
+      </a>
+      <a class="shot" href="assets/screenshots/08_aurora.jpg">
+        <img src="assets/screenshots/08_aurora_thumb.jpg" alt="Clicker Button screenshot 8" loading="lazy" width="600" height="338">
+      </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="legal">
+    <div class="wrap">
+      <div class="block-head">
+        <span class="kicker">Legal</span>
+        <h2>The small print</h2>
+        <p class="block-dek">What data the game collects, and the rules for using it.</p>
+      </div>
+      <div class="legal-row">
+        <a class="btn ghost" href="privacy-policy.html">Privacy Policy</a>
+        <a class="btn ghost" href="terms-of-service.html">Terms of Service</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="wrap">
+  <footer class="site">
+    <span>© 2026 <a href="https://tiny-depth-studio.github.io/">Tiny Depth Studio</a> · <a href="mailto:tinydepthstudio@gmail.com">tinydepthstudio@gmail.com</a></span>
+    <span></span>
+  </footer>
+</div>
+
+</body>
+</html>

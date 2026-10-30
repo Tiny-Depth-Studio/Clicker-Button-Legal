@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-YOS/jVwrG6obigcb7shWvFzRLT+xBjtz/jV7o0n8qOo='; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terms of Service — Clicker Button</title>
+<meta name="description" content="Terms of Service for Clicker Button by Tiny Depth Studio.">
+<style>
+  :root {
+    --bg: #0a0f1a;
+    --bg-elevated: #101827;
+    --bg-card: #131d2e;
+    --text: #eef3fb;
+    --text-dim: #a5b2c8;
+    --text-faint: #6f7d95;
+    --accent: #ffc63a;
+    --accent-strong: #ffd76e;
+    --accent-2: #6fb6ff;
+    --border: #26344d;
+    --border-soft: #1b263a;
+
+    --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
+    --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --font-mono: "Cascadia Mono", "Consolas", "SF Mono", ui-monospace, monospace;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #eef4fc;
+    --bg-elevated: #e2ebf7;
+    --bg-card: #f6f9fe;
+    --text: #111a2b;
+    --text-dim: #46546b;
+    --text-faint: #6c7a90;
+    --accent: #a86a00;
+    --accent-strong: #855300;
+    --accent-2: #1f63b8;
+    --border: #c3d1e6;
+    --border-soft: #d3dff0;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #eef4fc;
+      --bg-elevated: #e2ebf7;
+      --bg-card: #f6f9fe;
+      --text: #111a2b;
+      --text-dim: #46546b;
+      --text-faint: #6c7a90;
+      --accent: #a86a00;
+      --accent-strong: #855300;
+      --accent-2: #1f63b8;
+      --border: #c3d1e6;
+      --border-soft: #d3dff0;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    justify-content: center;
+  }
+
+  ::selection { background: var(--accent); color: #0a0f1a; }
+  a { color: var(--accent-strong); text-decoration-color: color-mix(in srgb, var(--accent-strong) 40%, transparent); text-underline-offset: 2px; }
+  a:hover { text-decoration-color: var(--accent-strong); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .page {
+    width: 100%;
+    max-width: 680px;
+    padding: clamp(2rem, 5vw, 4rem) 1.5rem 4rem;
+  }
+
+  .strata {
+    height: 8px;
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 2rem;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--accent) 0 6%,
+      var(--accent-2) 6% 11%,
+      var(--border-soft) 11% 18%,
+      var(--accent) 18% 24%,
+      var(--border-soft) 24% 34%,
+      var(--accent-2) 34% 40%,
+      var(--accent) 40% 48%,
+      var(--border-soft) 48% 58%,
+      var(--accent-2) 58% 63%,
+      var(--accent) 63% 72%,
+      var(--border-soft) 72% 82%,
+      var(--accent-2) 82% 90%,
+      var(--accent) 90% 100%
+    );
+    opacity: 0.85;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    letter-spacing: 0.03em;
+    color: var(--text-dim);
+    text-decoration: none;
+    margin-bottom: 1.6rem;
+  }
+  .back-link:hover { color: var(--accent-strong); }
+
+  .eyebrow {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+    font-size: clamp(1.9rem, 5vw, 2.4rem);
+    margin: 0 0 0.5rem;
+    line-height: 1.1;
+  }
+
+  .updated {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--text-faint);
+    margin: 0 0 2.6rem;
+  }
+
+  .lede {
+    color: var(--text-dim);
+    font-size: 1.02rem;
+    padding: 1rem 1.2rem;
+    background: var(--bg-card);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    margin: 0 0 2.6rem;
+  }
+
+  article section {
+    margin-bottom: 2.2rem;
+    padding-bottom: 2.2rem;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  article section:last-of-type {
+    border-bottom: none;
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--text);
+    margin: 0 0 0.8rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+  h2 .num {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 400;
+  }
+
+  p { margin: 0 0 0.9rem; color: var(--text); }
+  section > p:last-child { margin-bottom: 0; }
+
+  ul { margin: 0.6rem 0 0; padding-left: 1.3rem; }
+  li { margin-bottom: 0.5rem; color: var(--text); }
+  li:last-child { margin-bottom: 0; }
+  strong { color: var(--accent-strong); font-weight: 600; }
+
+  .contact-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin-top: 0.6rem;
+  }
+  .contact-box a { font-family: var(--font-mono); font-size: 0.95rem; }
+
+  footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 0.82rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    justify-content: space-between;
+  }
+  footer a { color: var(--text-dim); }
+  footer a:hover { color: var(--accent-strong); }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="strata" role="presentation"></div>
+  <a class="back-link" href="index.html">← Clicker Button</a>
+  <div class="eyebrow">Tiny Depth Studio · Legal</div>
+  <h1>Terms of Service</h1>
+  <p class="updated">Last updated: October 2026</p>
+
+  <p class="lede">These Terms of Service govern your use of Clicker Button (the &ldquo;Game&rdquo;), published by Tiny Depth Studio. By installing or playing the Game you agree to them. The Game is distributed through Steam, so Valve&rsquo;s Steam Subscriber Agreement applies to you as well; where these Terms and Steam&rsquo;s terms both apply to a purchase, Steam&rsquo;s terms govern the payment itself.</p>
+
+  <article>
+    <section>
+      <h2><span class="num">01</span>Who May Play</h2>
+      <p>You need a Steam account in good standing to play. The Game is not intended for children under 13, or under the minimum age of digital consent in your country. If you are a minor in your jurisdiction, you may only play with the consent of a parent or guardian, who accepts these Terms on your behalf.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">02</span>Your Licence</h2>
+      <p>We grant you a personal, non-exclusive, non-transferable licence to install and play the Game for your own entertainment. The Game is licensed to you, not sold.</p>
+      <p>You may record, stream and publish video of your own gameplay, including on monetised channels. That permission does not extend to redistributing the Game itself, its assets, or its code.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">03</span>What You May Not Do</h2>
+      <ul>
+        <li>Reverse-engineer, decompile or modify the Game, except where the law expressly permits it.</li>
+        <li>Tamper with save files, memory or network traffic to alter progress, diamonds, leaderboard scores or purchases.</li>
+        <li>Use external cheats, bots, macros or automation tools against the Game, its leaderboards or its servers.</li>
+        <li>Attempt to disrupt, overload or gain unauthorised access to our servers.</li>
+        <li>Sell, trade or transfer your account, your progress or your virtual items.</li>
+      </ul>
+      <p>Automation features built into the Game itself &mdash; such as buttons that earn on their own or offline earnings you unlock in-game &mdash; are part of the Game and are always allowed.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">04</span>Purchases and Virtual Items</h2>
+      <p>The Game is bought through Steam and also offers optional purchases of diamonds, made through Steam. Payment is handled entirely by Valve; we never receive your payment details.</p>
+      <ul>
+        <li><strong>Virtual items and currencies are licensed, not owned.</strong> They have no monetary value, cannot be exchanged for money or anything of value outside the Game, and cannot be sold or transferred to another player.</li>
+        <li><strong>Diamonds are consumable.</strong> They are used up when you spend them and are not refundable once used.</li>
+        <li><strong>Your diamond balance lives on our servers</strong> and is held against your Steam account. If your account is closed or terminated, any unused balance is lost.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="num">05</span>Refunds</h2>
+      <p>The Game and purchases made through Steam are subject to Valve&rsquo;s refund policy, and you should request refunds through Steam rather than from us.</p>
+      <p>If you live in the European Economic Area or the United Kingdom, you normally have a 14-day right to withdraw from a purchase of digital content. That right ends once delivery has begun with your agreement, which is what happens when diamonds are credited to your account immediately after purchase. Your statutory rights in respect of faulty or misdescribed content are not affected.</p>
+      <p>If something you paid for was not delivered, contact us and we will put it right.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">06</span>Changes to the Game</h2>
+      <p>Clicker Button is a live game. We may add, change, rebalance or remove features, items, prices and content, including adjusting how much a virtual item is worth in gameplay terms. We may also stop offering a product for sale. Items you have already bought remain in your account, but their in-game effect may change as the Game is balanced.</p>
+      <p>If we decide to shut down the Game&rsquo;s online services entirely, we will give reasonable notice in the Game and stop selling virtual items before doing so.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">07</span>Save Data and Progress</h2>
+      <p>Your progress is stored on your device. Your diamond balance and purchase records are held on our servers.</p>
+      <p>We take reasonable care of server-side data, but we cannot guarantee that local save files survive hardware failures or reinstalls. Deleting your local save or resetting your progress in-game is permanent and cannot be undone by us.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">08</span>Online Features</h2>
+      <p>Some features &mdash; purchases, your diamond balance and leaderboards &mdash; need an internet connection and our servers or Steam. The rest of the Game is playable offline. We may take services down for maintenance, and we do not guarantee uninterrupted or error-free online availability.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">09</span>Suspension and Termination</h2>
+      <p>We may suspend or terminate your access to online features if you breach these Terms, particularly by manipulating progress, diamonds, leaderboard scores or purchases, or by attacking our services. Where it is reasonable to do so, we will warn you first and give you a chance to put things right.</p>
+      <p>If your access is terminated for a breach, you lose access to your account&rsquo;s virtual items and balances without refund. If you believe a suspension was a mistake, email us at the address in section 14 with your Steam ID and we will review it.</p>
+      <p>You may stop playing at any time by uninstalling the Game. To have your server-side data deleted, see our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">10</span>Ownership</h2>
+      <p>The Game and everything in it &mdash; code, art, audio, text and trademarks &mdash; is owned by us or licensed to us, and is protected by copyright and other laws. Nothing in these Terms transfers those rights to you.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">11</span>Disclaimer and Liability</h2>
+      <p>To the extent permitted by law, the Game is provided &ldquo;as is&rdquo;, and we do not warrant that it will be free of faults or interruptions.</p>
+      <p>We are liable for damage caused by our own intent or gross negligence, for death or personal injury caused by our negligence, and for anything else that cannot be excluded by law. Otherwise, our total liability to you is limited to the amount you paid us for the Game and its virtual items in the twelve months before the claim arose.</p>
+      <p>If you are a consumer, you keep all the rights your local law gives you, and nothing in these Terms limits them.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">12</span>Changes to These Terms</h2>
+      <p>We may update these Terms. Changes are posted on this page with a revised date. If a change materially affects your rights, we will notify you in the Game before it takes effect, and continuing to play after that means you accept the updated Terms. If you do not accept them, you should stop playing and may request a refund through Steam if you are still eligible for one.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">13</span>Governing Law</h2>
+      <p>These Terms are governed by the laws of the Republic of Türkiye, and the courts of Türkiye have jurisdiction. If you are a consumer resident elsewhere, this does not deprive you of the protection of the mandatory laws of your country of residence, and you may bring proceedings there.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">14</span>Contact Us</h2>
+      <p>Questions about these Terms, a suspension, or an undelivered purchase:</p>
+      <div class="contact-box"><a href="mailto:tinydepthstudio@gmail.com">tinydepthstudio@gmail.com</a></div>
+    </section>
+  </article>
+
+  <footer>
+    <span>© 2026 Tiny Depth Studio</span>
+    <a href="privacy-policy.html">Privacy Policy</a>
+  </footer>
+</div>
+</body>
+</html>

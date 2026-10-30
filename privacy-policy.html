@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-YOS/jVwrG6obigcb7shWvFzRLT+xBjtz/jV7o0n8qOo='; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Clicker Button</title>
+<meta name="description" content="Privacy Policy for Clicker Button by Tiny Depth Studio.">
+<style>
+  :root {
+    --bg: #0a0f1a;
+    --bg-elevated: #101827;
+    --bg-card: #131d2e;
+    --text: #eef3fb;
+    --text-dim: #a5b2c8;
+    --text-faint: #6f7d95;
+    --accent: #ffc63a;
+    --accent-strong: #ffd76e;
+    --accent-2: #6fb6ff;
+    --border: #26344d;
+    --border-soft: #1b263a;
+
+    --font-display: "Bahnschrift", "Segoe UI Semibold", "Arial Narrow Bold", "Arial Narrow", sans-serif;
+    --font-body: "Sitka Text", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --font-mono: "Cascadia Mono", "Consolas", "SF Mono", ui-monospace, monospace;
+  }
+
+  :root[data-theme="light"] {
+    --bg: #eef4fc;
+    --bg-elevated: #e2ebf7;
+    --bg-card: #f6f9fe;
+    --text: #111a2b;
+    --text-dim: #46546b;
+    --text-faint: #6c7a90;
+    --accent: #a86a00;
+    --accent-strong: #855300;
+    --accent-2: #1f63b8;
+    --border: #c3d1e6;
+    --border-soft: #d3dff0;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #eef4fc;
+      --bg-elevated: #e2ebf7;
+      --bg-card: #f6f9fe;
+      --text: #111a2b;
+      --text-dim: #46546b;
+      --text-faint: #6c7a90;
+      --accent: #a86a00;
+      --accent-strong: #855300;
+      --accent-2: #1f63b8;
+      --border: #c3d1e6;
+      --border-soft: #d3dff0;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    justify-content: center;
+  }
+
+  ::selection { background: var(--accent); color: #0a0f1a; }
+  a { color: var(--accent-strong); text-decoration-color: color-mix(in srgb, var(--accent-strong) 40%, transparent); text-underline-offset: 2px; }
+  a:hover { text-decoration-color: var(--accent-strong); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .page {
+    width: 100%;
+    max-width: 680px;
+    padding: clamp(2rem, 5vw, 4rem) 1.5rem 4rem;
+  }
+
+  .strata {
+    height: 8px;
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 2rem;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--accent) 0 6%,
+      var(--accent-2) 6% 11%,
+      var(--border-soft) 11% 18%,
+      var(--accent) 18% 24%,
+      var(--border-soft) 24% 34%,
+      var(--accent-2) 34% 40%,
+      var(--accent) 40% 48%,
+      var(--border-soft) 48% 58%,
+      var(--accent-2) 58% 63%,
+      var(--accent) 63% 72%,
+      var(--border-soft) 72% 82%,
+      var(--accent-2) 82% 90%,
+      var(--accent) 90% 100%
+    );
+    opacity: 0.85;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    letter-spacing: 0.03em;
+    color: var(--text-dim);
+    text-decoration: none;
+    margin-bottom: 1.6rem;
+  }
+  .back-link:hover { color: var(--accent-strong); }
+
+  .eyebrow {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+    font-size: clamp(1.9rem, 5vw, 2.4rem);
+    margin: 0 0 0.5rem;
+    line-height: 1.1;
+  }
+
+  .updated {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--text-faint);
+    margin: 0 0 2.6rem;
+  }
+
+  .lede {
+    color: var(--text-dim);
+    font-size: 1.02rem;
+    padding: 1rem 1.2rem;
+    background: var(--bg-card);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    margin: 0 0 2.6rem;
+  }
+
+  article section {
+    margin-bottom: 2.2rem;
+    padding-bottom: 2.2rem;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  article section:last-of-type {
+    border-bottom: none;
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--text);
+    margin: 0 0 0.8rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+  h2 .num {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 400;
+  }
+
+  p { margin: 0 0 0.9rem; color: var(--text); }
+  section > p:last-child { margin-bottom: 0; }
+
+  ul { margin: 0.6rem 0 0; padding-left: 1.3rem; }
+  li { margin-bottom: 0.5rem; color: var(--text); }
+  li:last-child { margin-bottom: 0; }
+  strong { color: var(--accent-strong); font-weight: 600; }
+
+  .contact-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin-top: 0.6rem;
+  }
+  .contact-box a { font-family: var(--font-mono); font-size: 0.95rem; }
+
+  footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 0.82rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    justify-content: space-between;
+  }
+  footer a { color: var(--text-dim); }
+  footer a:hover { color: var(--accent-strong); }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="strata" role="presentation"></div>
+  <a class="back-link" href="index.html">← Clicker Button</a>
+  <div class="eyebrow">Tiny Depth Studio · Legal</div>
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated: October 2026</p>
+
+  <p class="lede">This Privacy Policy explains what data Clicker Button collects, why we collect it, who processes it on our behalf, and the choices you have. It covers the game client and the online services behind it. If you play in the European Economic Area or the United Kingdom, it also describes your rights under the GDPR.</p>
+
+  <article>
+    <section>
+      <h2><span class="num">01</span>Who We Are</h2>
+      <p>Clicker Button is developed and operated by Tiny Depth Studio (&ldquo;we&rdquo;, &ldquo;us&rdquo;). For the data described here, we act as the data controller. You can reach us at the address in section 12.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">02</span>Data We Collect</h2>
+      <p>We do not ask you to create an account with us, and we never ask for your name, postal address or payment details. Everything below is collected automatically while you play.</p>
+      <ul>
+        <li><strong>Your Steam ID, profile name and country.</strong> You sign in through Steam, so your Steam account number identifies you to our servers. We also store your Steam profile name and the country Steam reports for your connection with your account.</li>
+        <li><strong>Leaderboards.</strong> Your scores on the in-game leaderboards (such as lifetime earnings, highest combo and play hours) are uploaded to Steam leaderboards, where other players can see them next to your Steam profile name.</li>
+        <li><strong>Game progress.</strong> Your board, buttons, upgrades, perks, prestige, achievements, statistics and settings are stored on your device. We do not store your gameplay progress on our servers.</li>
+        <li><strong>Diamond balance.</strong> Diamonds are held on our servers, together with a ledger of every transaction that changed your balance.</li>
+        <li><strong>Purchases.</strong> When you buy diamonds through Steam we record the Steam order number, which product was bought, and whether it was delivered. Payment itself is handled entirely by Steam &mdash; we never see or store your card or payment details.</li>
+        <li><strong>Play sessions.</strong> When you start and stop playing, our servers record the start and end time of the session, your platform and the game version.</li>
+        <li><strong>Technical data.</strong> The IP address your device uses to reach our servers, which our hosting provider processes to deliver each request. If a purchase or request is refused as invalid or suspicious, we keep the IP address and the request with that record. If we restrict an account for breaking the Terms of Service, we keep a record of the restriction and its reason.</li>
+        <li><strong>Analytics data and error reports.</strong> Only if you consent &mdash; see section 04.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="num">03</span>Why We Use It, and Our Legal Basis</h2>
+      <ul>
+        <li><strong>To run the game</strong> &mdash; signing you in, delivering what you buy, keeping your diamond balance correct, and showing leaderboards and achievements. Legal basis: performance of our agreement with you.</li>
+        <li><strong>To keep the game working and fair</strong> &mdash; preventing duplicate or fraudulent transactions, enforcing the Terms of Service, keeping an auditable record of purchases, and understanding server load from play sessions. Legal basis: our legitimate interest in a working, non-exploitable game, and our legal obligation to keep transaction records.</li>
+        <li><strong>To understand how the game is played and improve it</strong> &mdash; balancing the economy, seeing where players get stuck, measuring which features are used and fixing errors. Legal basis: your consent.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="num">04</span>Analytics and Your Consent</h2>
+      <p>Once the game has loaded for the first time, we ask whether you want to share usage data. Analytics is <strong>off until you say yes</strong>: if you decline, no analytics data leaves your device.</p>
+      <p>If you accept, we use <strong>GameAnalytics</strong> (GameAnalytics A/S, Denmark) as our analytics provider. The data sent is linked to your Steam ID, so it is not anonymous. It includes your in-game progress and balances, purchases (product, price and currency), session length, device and platform information, and error reports (the error message and the first line of its technical stack trace).</p>
+      <p>You can change your mind at any time in <em>Settings &rarr; Gameplay</em>. Withdrawing consent stops any further analytics from being sent. It does not affect data already collected while consent was in place, and it does not affect the rest of the game.</p>
+      <p>We do not use this data for advertising, and we do not sell it.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">05</span>Service Providers</h2>
+      <p>We use the following providers, who process data on our behalf or under their own policies:</p>
+      <ul>
+        <li><strong>Valve / Steamworks</strong> &mdash; sign-in, achievements, leaderboards and all payment processing.</li>
+        <li><strong>Supabase</strong> &mdash; hosting for our game servers and the database holding your account, diamond balances, purchase records and play sessions, located in the European Union.</li>
+        <li><strong>GameAnalytics</strong> &mdash; analytics and error reports, only if you have given consent.</li>
+      </ul>
+      <p>Each of these providers handles data according to its own privacy policy. We do not share your data with anyone else, and we do not sell it.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">06</span>International Transfers</h2>
+      <p>Our providers may process data outside your country, including outside the European Economic Area. Where that happens, transfers rely on the safeguards those providers put in place, such as the European Commission&rsquo;s standard contractual clauses.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">07</span>How Long We Keep Data</h2>
+      <ul>
+        <li><strong>Account data, diamond balances and play sessions</strong> &mdash; for as long as your account exists, so that what you have bought stays with you. We delete it when you ask us to (see section 08).</li>
+        <li><strong>Records of refused requests and account restrictions</strong> &mdash; as long as needed to prevent fraud and handle disputes about them.</li>
+        <li><strong>Purchase records</strong> &mdash; kept as long as required for accounting and consumer-protection purposes.</li>
+        <li><strong>Analytics data and error reports</strong> &mdash; retained by GameAnalytics under its own retention schedule.</li>
+        <li><strong>Leaderboard scores</strong> &mdash; held by Steam under Valve&rsquo;s own policy.</li>
+        <li><strong>Local save data</strong> &mdash; stays on your device until you delete it.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="num">08</span>Your Rights</h2>
+      <p>Depending on where you live, you may have the right to access the data we hold about you, to have it corrected or deleted, to restrict or object to how we use it, to receive a copy in a portable format, and to withdraw consent you have given.</p>
+      <p>To exercise any of these, email us at the address in section 12 and include your Steam ID so we can find your records. We will respond within 30 days. If you are in the EEA or the UK and are unhappy with our response, you may complain to your local data protection authority.</p>
+      <p>Some data cannot be deleted on request: we must keep purchase records for as long as accounting and consumer-protection law requires.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">09</span>Data Security</h2>
+      <p>Connections between the game and our servers are encrypted, every request is tied to a short-lived signed session, and your diamond balance is held server-side rather than on your device. No system is perfectly secure, but we take reasonable technical and organisational steps to protect your data.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">10</span>Children&rsquo;s Privacy</h2>
+      <p>The game is not intended for children under 13, or under the minimum age of digital consent in your country (up to 16 in parts of the European Economic Area). We do not knowingly collect data from children below that age. If you believe a child has provided us with data, contact us and we will delete it.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">11</span>Changes to This Policy</h2>
+      <p>We may update this policy from time to time. Changes are posted on this page with a revised date. If a change materially affects how we use your data, we will tell you in the game before it takes effect.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">12</span>Contact Us</h2>
+      <p>Questions about this policy, or a request about your data:</p>
+      <div class="contact-box"><a href="mailto:tinydepthstudio@gmail.com">tinydepthstudio@gmail.com</a></div>
+    </section>
+  </article>
+
+  <footer>
+    <span>© 2026 Tiny Depth Studio</span>
+    <a href="terms-of-service.html">Terms of Service</a>
+  </footer>
+</div>
+</body>
+</html>

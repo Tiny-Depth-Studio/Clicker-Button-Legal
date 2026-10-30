@@ -1,0 +1,65 @@
+name: Refresh Steam data
+
+on:
+  schedule:
+    - cron: "23 5,17 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "site/**"
+      - "privacy-policy.html"
+      - "terms-of-service.html"
+      - ".github/workflows/steam-refresh.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: steam-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+
+      - name: Fetch store data and announcements
+        run: python site/steam.py
+
+      - name: Rebuild the landing page
+        run: python site/build_site.py
+
+      - name: Commit if anything changed
+        run: |
+          git add --intent-to-add site/data/steam.json 2>/dev/null || true
+          if git diff --quiet; then
+            echo "Steam data unchanged, nothing to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # main may have moved while this job was building. Point the branch at
+          # whatever is on the remote now, keeping the freshly built files in the
+          # working tree, so the commit below fast-forwards instead of racing.
+          git fetch --depth=1 origin main
+          git reset --mixed FETCH_HEAD
+
+          git add index.html 404.html privacy-policy.html terms-of-service.html
+          if [ -f site/data/steam.json ]; then git add site/data/steam.json; fi
+          if git diff --cached --quiet; then
+            echo "Nothing new once synced with main."
+            exit 0
+          fi
+
+          git commit -m "Refresh Steam news and store art on the landing page"
+          git push origin HEAD:main
